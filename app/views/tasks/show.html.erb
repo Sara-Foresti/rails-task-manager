@@ -1,0 +1,19 @@
+<h2><%= @task.title %></h2>
+<p><%= @task.details %></p>
+<div class="group" style="display: flex; align-items: center;">
+  <% if @task.completed === false %>
+    <i class="far fa-square"></i><p>This task is not completed yet</p>
+  <% else %>
+    <i class="far fa-check-square"></i><p>This task is completed</p>
+  <% end %>
+</div>
+
+<%= link_to "Edit this task", edit_task_path %>
+
+<%= link_to "Back to your tasks list", tasks_path %>
+
+<% if @task.completed == false %>
+  <%= link_to "Mark this task as completed",  mark_as_completed_path(@task), method: :post %>
+<% end %>
+<!-- so we don't display the mark as done option if the task is already been done -->
+
